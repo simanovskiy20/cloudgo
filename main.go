@@ -10,6 +10,27 @@ import (
 	"github.com/gorilla/mux"
 )
 
+//////TransactionLogger/////
+
+type TransactionLogger interface {
+	WriteDelete(key string)
+	WritePut(key, value string)
+}
+
+/////FileTransactionLogger/////
+
+type FileTransactionLogger struct {
+	// file *os.File
+}
+
+func (l *FileTransactionLogger) WriteDelete(key string) {
+	// fmt.Fprintf(l.file, "DELETE %s\n", key)
+}
+
+func (l *FileTransactionLogger) WritePut(key, value string) {
+	// fmt.Fprintf(l.file, "PUT %s %s\n", key, value)
+}
+
 // //////STORE//////////
 var ErrorNoSuchKey = errors.New("no such key")
 
